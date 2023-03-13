@@ -1,0 +1,92 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Total</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody >
+                  <tr *ngFor="let item of items">
+                    <td class="col-sm-8 col-md-6">
+                      <div class="media">
+                        <a class="thumbnail pull-left" href="#">
+                          <img class="media-object" src="{{item.product.imgUrl}}" style="width: 72px; height: 72px;">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading"><a href="#">{{item.product.title}}</a></h4>
+                          <h5 class="media-heading">  <a href="#">256Gb</a></h5>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="col-sm-1 col-md-1" style="text-align: center">
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <button class="btn btn-link px-2" (click)="quantityDown(item)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <input id="form1" min="1" name="quantity" [value]="item.qty" type="number" class="form-control form-control-sm" />
+                        <button class="btn btn-link px-2" (click)="QuantityUp(item)">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="col-sm-1 col-md-1 text-center"><strong>${{item.product.price}}</strong></td>
+                    <td class="col-sm-1 col-md-1 text-center">
+                      <strong>${{item.product.price * item.qty}}</strong>
+                    </td>
+                    <td class="col-sm-1 col-md-1">
+                      <button type="button" class="btn btn-danger" (click)="deletefromcart(item)">
+                        <span class="glyphicon glyphicon-remove"></span> Remove
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h5>Subtotal</h5></td>
+                    <td class="text-right"><h5><strong>${{totalPrice}}</strong></h5></td>
+                  </tr>
+                  <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h5>Estimated shipping</h5></td>
+                    <td class="text-right"><h5><strong>$7</strong></h5></td>
+                  </tr>
+                  <tr>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td><h3>Total</h3></td>
+                    <td class="text-right"><h3><strong>${{totalPrice + 7}}</strong></h3></td>
+                  
+                  
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                        </button></td>
+                        <td>
+                        <button type="button" class="btn btn-success" (click)="checkOut()">
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

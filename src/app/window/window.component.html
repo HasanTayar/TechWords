@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-auto">
+    <app-sidebar (typeChanged)="setType($event)"></app-sidebar>
+  </div>
+  <div class="col-auto">
+    <app-products [type]="_type"></app-products>
+  </div>
+</div>
