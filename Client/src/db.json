@@ -1,0 +1,336 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "saleh",
+      "email": "saleh@gmail.com",
+      "pass": "1234",
+      "gender": "male",
+      "birthdate": "30/04/2000"
+    },
+    {
+      "id": "2",
+      "name": "Hasan",
+      "email": "hasan@gmail.com",
+      "pass": "1234",
+      "gender": "male",
+      "birthdate": "16/01/2002"
+    },
+    {
+      "name": "Hasan",
+      "email": "hasantayar1602@gmail.com",
+      "password": "1234",
+      "gender": "male",
+      "birthdate": "2023-02-01",
+      "id": "h4u2dsb"
+    },
+    {
+      "name": "test",
+      "email": "test@gmail.com",
+      "password": "123",
+      "gender": "female",
+      "birthdate": "2023-02-24",
+      "id": "lyPK7Yk"
+    }
+  ],
+  "products": [
+    {
+      "serialNumber": "1",
+      "title": "iPhone 14 Plus",
+      "imgUrl": "/assets/images/iphone14p.jpg",
+      "price": "3700"
+    },
+    {
+      "serialNumber": "2",
+      "title": "Galaxy S22 Ultra",
+      "imgUrl": "/assets/images/s22u.jpg",
+      "price": "4700"
+    },
+    {
+      "serialNumber": "3",
+      "title": "Google Pixel 7",
+      "imgUrl": "/assets/images/pixel7.jpg",
+      "price": "2500"
+    },
+    {
+      "serialNumber": "4",
+      "title": "Nothing Phone (1)",
+      "imgUrl": "/assets/images/nothing.jpg",
+      "price": "1700"
+    },
+    {
+      "serialNumber": "5",
+      "title": "iPad Pro 11",
+      "imgUrl": "/assets/images/ipadpro.jpg",
+      "price": "4800"
+    },
+    {
+      "serialNumber": "6",
+      "title": "Galaxy Tab S8+",
+      "imgUrl": "/assets/images/tabs8.jpg",
+      "price": "3700"
+    },
+    {
+      "serialNumber": "7",
+      "title": "iPad mini",
+      "imgUrl": "/assets/images/ipadmini.jpg",
+      "price": "2000"
+    },
+    {
+      "serialNumber": "8",
+      "title": "Xiaomi Redmi Pad",
+      "imgUrl": "/assets/images/redmipad.jpg",
+      "price": "1800"
+    },
+    {
+      "serialNumber": "9",
+      "title": "MSI",
+      "imgUrl": "/assets/images/msi12.jpg",
+      "price": "4000"
+    },
+    {
+      "serialNumber": "10",
+      "title": "Asus ROG",
+      "imgUrl": "/assets/images/asusrog.jpg",
+      "price": "5000"
+    },
+    {
+      "serialNumber": "11",
+      "title": "Asus ROG Strix",
+      "imgUrl": "/assets/images/rogstrix.jpg",
+      "price": "4999"
+    },
+    {
+      "serialNumber": "12",
+      "title": "Lenovo Legion T5",
+      "imgUrl": "/assets/images/legion.jpg",
+      "price": "4500"
+    }
+  ],
+  "cart": [
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 1
+    },
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 2
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 2,
+            "product": {
+              "serialNumber": "1",
+              "title": "iPhone 14 Plus",
+              "imgUrl": "/assets/images/iphone14p.jpg",
+              "price": 3700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 7400,
+        "user": "hasan@gmail.com"
+      },
+      "id": 3
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "1",
+              "title": "iPhone 14 Plus",
+              "imgUrl": "/assets/images/iphone14p.jpg",
+              "price": 3700
+            }
+          },
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 8400,
+        "user": "hasan@gmail.com"
+      },
+      "id": 4
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 4700,
+        "user": "hasan@gmail.com"
+      },
+      "id": 5
+    },
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 6
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 4700,
+        "user": "hasan@gmail.com"
+      },
+      "id": 7
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "3",
+              "title": "Google Pixel 7",
+              "imgUrl": "/assets/images/pixel7.jpg",
+              "price": 2500
+            }
+          },
+          {
+            "qty": 2,
+            "product": {
+              "serialNumber": "4",
+              "title": "Nothing Phone (1)",
+              "imgUrl": "/assets/images/nothing.jpg",
+              "price": 1700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 5900,
+        "user": "hasan@gmail.com"
+      },
+      "id": 8
+    },
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 9
+    },
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 10
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 4700,
+        "user": "hasan@gmail.com"
+      },
+      "id": 11
+    },
+    {
+      "cart": {
+        "products": [],
+        "paid": true,
+        "totalPrice": 0,
+        "user": "hasan@gmail.com"
+      },
+      "id": 12
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 4700,
+        "user": "hasan@gmail.com"
+      },
+      "id": 13
+    },
+    {
+      "cart": {
+        "products": [
+          {
+            "qty": 1,
+            "product": {
+              "serialNumber": "2",
+              "title": "Galaxy S22 Ultra",
+              "imgUrl": "/assets/images/s22u.jpg",
+              "price": 4700
+            }
+          }
+        ],
+        "paid": true,
+        "totalPrice": 4700,
+        "user": "hasan@gmail.com"
+      },
+      "id": 14
+    }
+  ]
+}

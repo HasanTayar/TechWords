@@ -1,0 +1,37 @@
+<section class="vh-100" style="background-color: #eee;" >
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-12 col-xl-4">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body text-center">
+                        <div class="mt-3 mb-4">
+                            <img *ngIf="isMale==true" src="assets/images/male_avatar.png" class="rounded mx-auto d-block" style="width: 150px;" />
+                            <img *ngIf="isMale==false" src="assets/images/female_avatar.png" class="rounded mx-auto d-block" style="width: 150px;" />
+                            <br><br>
+                            <div class="d-flex justify-content-between mb-4">
+                                <p class="mb-2">Name: </p>
+                                <p class="mb-2">{{loggedin.name}}</p>
+                            </div>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-between mb-4">
+                                <p class="mb-2">E-mail: </p>
+                                <p class="mb-2">{{loggedin.email}}</p>
+                            </div>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-between mb-4">
+                                <p class="mb-2">Gender: </p>
+                                <p class="mb-2">{{loggedin.gender}}</p>
+                            </div>
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-between mb-4">
+                                <p class="mb-2">Birthday: </p>
+                                <p class="mb-2">{{loggedin.birthdate}}</p>    
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

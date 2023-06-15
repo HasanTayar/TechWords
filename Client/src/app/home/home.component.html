@@ -1,0 +1,34 @@
+<br>
+<h4>{{title}}</h4>
+<hr>
+<div class="row">
+    <div class="col" *ngFor="let product of products">
+        <div class="card" style="width: 18rem; margin-bottom: 10px;">
+            <img class="card-img-top" src={{product.imgUrl}} style="width: 200px;">
+            <div class="card-header">
+                <h5 style="text-align: center;">{{product.title}}</h5>
+                <br>
+                price: ${{product.price}}
+            </div>
+            <!--<button class="btn btn-primary" (onclick)="addToCart(product)">Add to cart</button>-->
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+
+
+
+
+<!-- <div class="card-header">Contact Us</div>
+<div class="card-body">
+    <h4 class="card-title">Address</h4>
+    <p class="card-text">nahf, <br> 0000-00-00-00<br><br>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-youtube"></a>
+        <a href="#" class="fa fa-instagram"></a> 
+    </p>
+</div> -->
