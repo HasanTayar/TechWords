@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private productService : ProductsService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getPopular();
+
   }
 
   // addToCart(product: Product): void {

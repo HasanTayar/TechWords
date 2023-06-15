@@ -13,24 +13,23 @@ export class ProductsComponent implements OnInit {
   _type : string =""
   products : Product[] = []
   totalPrice: number = 0
+
   @Input() set type(type: string) {
-    
-    this._type = type
-      if(this.type == 'Tablet'){
-       this.products = this.productService.getTabletProducts();
-      }
-      else if(this.type == 'Mobile'){
-        this.products = this.productService.getMobileProducts();
-      }
-      else if(this.type == 'Pc'){
-        this.products = this.productService.getPcProducts();
-      }
+    this._type = type;
+    if(this.type){
+      this.productService.getProductsByType(this.type).subscribe(products => {
+        this.products = products;
+      });
     }
-    get type(): string { return this._type }
+  }
+  get type(): string { return this._type }
+
   constructor(private productService : ProductsService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+    });
   }
 
   getTotalPrice(){
@@ -38,8 +37,8 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    const cart = new CartProduct(product);
-    this.cartService.addProductToCart(cart);
+    this.cartService.addProductToCart(product).subscribe(() => {
+      this.totalPrice += product.price;
+    });
   }
-
 }

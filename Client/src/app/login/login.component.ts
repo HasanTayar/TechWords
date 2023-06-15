@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     let mail = this.loginForm.value.email
     if(this.usersService.login(this.loginForm.value.email,this.loginForm.value.pass))
     {
-      this.router.navigate(['profile/userdetails',mail]);
+      this.router.navigate(['/userdetails',mail]);
     }
     else
       alert("Wrong e-mail or password")

@@ -11,4 +11,5 @@ export class User {
         this.gender = gender
         this.birthdate = birthdate
     }
+
 }

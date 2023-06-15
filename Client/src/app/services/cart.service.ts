@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from '../model/cart';
-import { CartProduct } from '../model/cart';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,118 +7,59 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-  removeFromCart(item: any) {
-    throw new Error('Method not implemented.');
-  }
-  private carts: { [userId: string]: Cart } = {};
-  baseUrl:string="http://localhost:3000/";
-  headers={'content-type':'application/json'}
-  constructor(private router:Router,private http: HttpClient){
-    this.carts['anonymous']=new Cart();
+  baseUrl: string = "http://localhost:3000/";
+  headers = { 'content-type': 'application/json' }
 
-   }
-  
-   getCurrentUserCart(): Cart {
+  constructor(private router: Router, private http: HttpClient) { }
+
+  getCurrentUserCart(): Observable<any> {
     const userEmail = localStorage.getItem('user');
-    if(userEmail===null){
-      return this.carts['anonymous'];
-    }
-    let cart = this.carts[userEmail];
-    if (!cart) {
-      cart = new Cart;
-      this.carts[userEmail] = cart;
-      
-    }
-    return cart;
+    return this.http.get(`${this.baseUrl}carts/${userEmail}`, { headers: this.headers });
   }
 
-
-
-
-
-  addProductToCart(product: CartProduct): void {
-    
-    const cart = this.getCurrentUserCart();
-    let existingProduct = cart.products.find(p => p.product.title === product.product.title);
-    if (existingProduct) {
-        existingProduct.qty++;
-        cart.totalPrice += product.product.price;
-    } else {
-        cart.products.push(product);
-        cart.totalPrice += product.product.price;
-    }
+  addProductToCart(product: any): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.post(`${this.baseUrl}carts/${userEmail}/add`, product, { headers: this.headers });
   }
 
+  removeProductFromCart(product: any): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.post(`${this.baseUrl}carts/${userEmail}/remove`, product, { headers: this.headers });
+  }
 
-  
-  removeProductFromCart(product: CartProduct): void {
-    
-    const cart = this.getCurrentUserCart();
-    const index = cart.products.indexOf(product);
-    if (index > -1) {
-      cart.products.splice(index, 1);
-      cart.totalPrice -= product.product.price * product.qty;
-    }
+  updateProductQuantity(product: any, change: number): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.put(`${this.baseUrl}carts/${userEmail}/updateQty`, { product, change }, { headers: this.headers });
   }
-  
-  QuantityUp(product: CartProduct): void {
-    const cart = this.getCurrentUserCart();
-    const index = cart.products.indexOf(product);
-    if (index > -1) {
-      cart.products[index].qty += 1;
-      cart.totalPrice += product.product.price;
-     
-    }
+
+  getItems(): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.get(`${this.baseUrl}carts/${userEmail}/items`, { headers: this.headers });
   }
-  
-  quantityDown(product: CartProduct): void {
-    const cart = this.getCurrentUserCart();
-    const index = cart.products.indexOf(product);
-    if (index > -1) {
-      cart.products[index].qty -= 1;
-      cart.totalPrice -= product.product.price;
-    }
+
+  getTotalPrice(): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.get(`${this.baseUrl}carts/${userEmail}/totalPrice`, { headers: this.headers });
   }
-  
-  getItems(): CartProduct[] {
-    const cart = this.getCurrentUserCart();
-    return cart.products;
+
+  clearCart(): Observable<any> {
+    const userEmail = localStorage.getItem('user');
+    return this.http.delete(`${this.baseUrl}carts/${userEmail}/clear`, { headers: this.headers });
   }
-  
-  gettotalprice(): number {
-    const cart = this.getCurrentUserCart();
-    return cart.totalPrice;
-  }
-  
-  clearCart(): CartProduct[] {
-    const cart = this.getCurrentUserCart();
-    cart.products = [];
-    cart.totalPrice = 0;
-    return cart.products;
-    
-  }
- 
+
   Payment(): void {
-    const cart = this.getCurrentUserCart();
     const userEmail = localStorage.getItem('user');
-    if (cart.user === null){
+    if (userEmail === null) {
       alert("you must be logged in to make the payment");
-      this.router.navigateByUrl('/profile/login'); // navigate the user to the login page
-    } else if(userEmail) {
-
-      alert("Payment Successful");
-      cart.paid = true;
-      this.saveCart().subscribe(); 
-      this.clearCart();
-    } 
+      this.router.navigateByUrl('/login');
+    } else {
+      this.http.post(`${this.baseUrl}carts/${userEmail}/pay`, {}, { headers: this.headers }).subscribe(
+        () => {
+          alert("Payment Successful");
+          this.clearCart().subscribe();
+        },
+        error => console.error(error)
+      );
+    }
   }
-  saveCart(): Observable<any> {
-    const currentUserCart = this.getCurrentUserCart();
-    let body = JSON.stringify({ cart: currentUserCart });   
-     let b = JSON.stringify(this.carts['products']);
-
-    return this.http.post(this.baseUrl+'cart',body,{
-      headers:this.headers
-    })
-  }
 }

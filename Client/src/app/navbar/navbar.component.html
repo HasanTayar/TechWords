@@ -3,7 +3,17 @@
     <li><a routerLinkActive="active" routerLink="home">Home</a></li>
     <li><a routerLinkActive="active" routerLink="catalog">Catalog</a></li>
     <li><a routerLinkActive="active" routerLink="about">About Us</a></li>
-    <li><a routerLinkActive="active" routerLink="cart">Cart</a></li>
-    <li><a routerLinkActive="active" routerLink="profile">{{login}}</a></li>
-    
+
+    <!-- For logged-in users -->
+    <ng-container *ngIf="(currentUser$ | async); else notLoggedIn">
+        <li><a routerLinkActive="active" routerLink="cart">Cart</a></li>
+        <li><a routerLinkActive="active" routerLink="profile">Profile</a></li>
+        <li><a routerLinkActive="active" (click)="userService.logout()">Logout</a></li>
+    </ng-container>
+
+    <!-- For not logged-in users -->
+    <ng-template #notLoggedIn>
+        <li><a routerLinkActive="active" routerLink="login">Login</a></li>
+    </ng-template>
+
 </ul>
